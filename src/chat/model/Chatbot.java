@@ -20,48 +20,96 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = null;
-		this.shoppingList = null;
-		this.cuteAnimalMemes = null;
+		this.movieList = new ArrayList<Movie>();
+		this.shoppingList = new ArrayList<String>();
+		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
-		this.questions = null;
-		this.username = null;
+		this.questions = new String [10];
+		this.username = username;
 		this.content = null;
 		this.intro = null;
-		this.currentTime = null;
-		this.topics = null;
-		this.verbs = null;
-		this.followUps = null;
-	}
-
-	private void buildMovieList()
-	{
+		this.currentTime = LocalTime.now();
+		this.topics = new String [7];
+		this.verbs = new String [4];
+		this.followUps = new String [5];
 		
-	}
-	
-	private void buildShoppingList()
-	{
-		
+		buildVerbs();
+		buildShoppingList();
+		buildQuestions();
+		buildCuteAnimals();
+		buildMovieList();
+		processConversation("");
+		getCurrentTime();
 	}
 	
-	private void buildCuteAnimals()
+	private void buildVerbs()
 	{
-		
+		verbs[0] = "like";
+		verbs[1] = "dislike";
+		verbs[2] = "ambivalent about";
+		verbs[3] = "am thinking about";
 	}
 	
 	private void buildQuestions()
 	{
-		
+		questions[0] = "What is your name?";
+		questions[1] = "What do you like to do?";
+		questions[2] = "Are you an avid movie-goer?";
+		questions[3] = "Do you like to go shopping?";
+		questions[4] = "Do you like cute animals?";
+		questions[5] = "Do you like memes?";
+		questions[6] = "What's your favorite color?";
+		questions[7] = "Here's some trivia: Who is the president of your country?";
+		questions[8] = "Here's some trivia: What is a ligerian?";
+		questions[9] = "What's your favorite fruit?";
+	}
+
+	private void buildMovieList()
+	{
+		movieList.add(new Movie(""));
+		movieList.add(new Movie("Spiderman"));
+		movieList.add(new Movie("Hidden Figures"));
+		movieList.add(new Movie("Thor: Ragnarok"));
+		movieList.add(new Movie("Titanic"));
+		movieList.add(new Movie("Gladiator"));
+	}
+	
+	private void buildShoppingList()
+	{
+		shoppingList.add("snacks");
+		shoppingList.add("veggies");
+		shoppingList.add("protein");
+		shoppingList.add("fruits");
+		shoppingList.add("grains");
+	}
+	
+	private void buildCuteAnimals()
+	{
+		cuteAnimalMemes.add("otter");
+		cuteAnimalMemes.add("otter");
+		cuteAnimalMemes.add("FLOOFER");
+		cuteAnimalMemes.add("FLOOFER");
+		cuteAnimalMemes.add("kittie");
+		cuteAnimalMemes.add("kittie");
+		cuteAnimalMemes.add("pupper");
 	}
 	
 	public String processConversation(String input)
 	{
-		return null;
+		input = "The input will not be normal.";		
+		return input;
 	}
 	
 	public boolean lengthChecker(String input)
 	{
-		return false;
+		boolean validLength = false;
+		
+		if (input != null && input.length() > 2)
+		{
+			validLength = true;
+		}
+		
+		return validLength;
 	}
 	
 	public boolean htmlTagChecker(String input)
@@ -81,7 +129,7 @@ public class Chatbot
 	
 	public boolean cuteAnimalMemeChecker(String input)
 	{
-		return false;
+		return true;
 	}
 	
 	public boolean shoppingListChecker(String shoppingItem)
@@ -126,7 +174,7 @@ public class Chatbot
 
 	public String [] getQuestions()
 	{
-		return null;
+		return questions;
 	}
 	
 	public String[] getVerbs()
@@ -161,7 +209,7 @@ public class Chatbot
 	
 	public LocalTime getCurrentTime()
 	{
-		return null;
+		return currentTime;
 	}
 	
 	public void setUsername(String username)

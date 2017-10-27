@@ -8,11 +8,10 @@ public class PopupDisplay
 	private ImageIcon icon;
 	private String windowTitle;
 	
-	public PopupDisplay()
-	
+	public PopupDisplay()	
 	{
 		icon = new ImageIcon(getClass().getResource("images/chatbotPPAltTwo.png"));
-		windowTitle = "Sample";
+		windowTitle = "Chattabotta says...";
 	}
 	
 	public void displayText(String message)
