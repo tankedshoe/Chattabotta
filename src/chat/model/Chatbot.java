@@ -40,6 +40,24 @@ public class Chatbot
 		buildMovieList();
 		processConversation("");
 		getCurrentTime();
+		buildTopics();
+		buildFollowups();
+	}
+	
+	private void buildTopics()
+	{
+		topics[0] = "animals";
+		topics[1] = "food";
+		topics[2] = "trees";
+		topics[3] = "weather";
+		topics[4] = "games";
+		topics[5] = "sports";
+		topics[6] = "miscellaneous";
+	}
+	
+	private void buildFollowups()
+	{
+		
 	}
 	
 	private void buildVerbs()
@@ -105,7 +123,16 @@ public class Chatbot
 	
 	private String buildChatbotResponse()
 	{
-		String response = "";
+		String response = "I";
+		int random = (int) (Math.random() * verbs.length);
+		
+		response += verbs[random];
+		
+		random = (int) (Math.random() * topics.length);
+		response += " " + topics[random] + ".\n";
+		
+		random = (int) (Math.random() * questions.length);
+		response += questions[random];
 		
 		return response;
 	}
@@ -159,12 +186,16 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
+		if (exitString.equalsIgnoreCase("quit"))
+		{
+			return true;
+		}
 		return false;
 	}
 
 	public boolean keyboardMashChecker(String sample)
 	{
-		return false;
+		if ()
 	}
 	
 	public List<Movie> getMovieList()
