@@ -156,7 +156,14 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		return false;
+		if (input.contains("@") || !input.equals(null) || !input.contains("") || !input.contains(".com") || !input.contains("@@"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean contentChecker(String contentCheck)
@@ -166,6 +173,19 @@ public class Chatbot
 	
 	public boolean cuteAnimalMemeChecker(String input)
 	{
+		int index = 0;
+		
+		for (index = 0; index < cuteAnimalMemes.size(); index +=1)
+		{
+			if (input.contains("pupper") || input.contains("otter") || input.contains("kittie"))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 		return true;
 	}
 	
@@ -173,7 +193,8 @@ public class Chatbot
 	{
 		int index = 0;
 		
-  	for (index = 0; index < shoppingList.size(); index+=1)		{
+  	for (index = 0; index < shoppingList.size(); index+=1)		
+  		{
 			if (shoppingItem.contains("protein") || shoppingItem.contains("veggies") || shoppingItem.contains("snacks"))
 			{
 				return true;
@@ -189,7 +210,21 @@ public class Chatbot
 	
 	public boolean movieTitleChecker(String title)
 	{
-		return false;
+		int index = 0;
+		
+		for (index = 0; index < movieList.size(); index+=1)
+		{
+			if (title.contains("Spiderman") || title.contains("Hidden Figures"))
+			{
+				return true;
+			}
+			else
+				
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public boolean movieGenreChecker(String genre)
@@ -208,7 +243,7 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
-		if ()
+		return true;
 	}
 	
 	public List<Movie> getMovieList()
