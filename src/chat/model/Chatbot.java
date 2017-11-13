@@ -26,8 +26,8 @@ public class Chatbot
 		this.currentTime = null;
 		this.questions = new String [10];
 		this.username = username;
-		this.content = null;
-		this.intro = null;
+		this.content = "";
+		this.intro = "";
 		this.currentTime = LocalTime.now();
 		this.topics = new String [7];
 		this.verbs = new String [4];
@@ -112,6 +112,11 @@ public class Chatbot
 		cuteAnimalMemes.add("pupper");
 	}
 	
+	/**
+	 * The vehicle for conversation between the user and the chatbot.
+	 * @param input This is for the user's input, used in building the chatbot's response.
+	 * @return Returns the response that the program will spit out.
+	 */
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -133,6 +138,13 @@ public class Chatbot
 		
 		random = (int) (Math.random() * questions.length);
 		response += questions[random];
+		
+		random = (int) (Math.random() * 2);
+		if (random % 2 == 0)
+		{
+			random = (int) (Math.random() * movieList.size());
+			response += movieList.get(random).getTitle() + "is a great movie!";
+		}
 		
 		return response;
 	}
