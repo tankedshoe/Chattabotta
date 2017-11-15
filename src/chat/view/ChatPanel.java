@@ -15,7 +15,7 @@ public class ChatPanel extends JPanel
 	private JButton submit;
 	private SpringLayout layout;
 	
-	public ChatPanel() 
+	public ChatPanel(ChatbotController appController) 
 	{
 		super();
 		appController = new ChatbotController();
@@ -29,17 +29,17 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
-	public void setupPanel()
+	private void setupPanel()
 	{
 		
 	}
 	
-	public void setupLayout()
+	private void setupLayout()
 	{
 		
 	}
 	
-	public void setupListeners()
+	private void setupListeners()
 	{
 		
 	}
