@@ -6,6 +6,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class ChatPanel extends JPanel
 {
@@ -18,7 +19,7 @@ public class ChatPanel extends JPanel
 	public ChatPanel(ChatbotController appController) 
 	{
 		super();
-		this.appController = new ChatbotController();
+		this.appController = appController;
 		
 		//Initialize GUI data members
 		this.responseArea = new JTextArea(10, 25);
@@ -33,12 +34,22 @@ public class ChatPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		
+		this.setBackground(Color.CYAN);
+		this.setLayout(layout);
+		this.add(submit);
+		this.add(input);
+		this.add(responseArea);
 	}
 	
 	private void setupLayout()
 	{
-		
+		layout.putConstraint(SpringLayout.NORTH, input, 0, SpringLayout.NORTH, submit);
+		layout.putConstraint(SpringLayout.WEST, input, 0, SpringLayout.WEST, responseArea);
+		layout.putConstraint(SpringLayout.SOUTH, submit, -10, SpringLayout.SOUTH, this);
+		layout.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, responseArea);
+		layout.putConstraint(SpringLayout.NORTH, responseArea, 20, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, responseArea, 25, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.EAST, responseArea, -25, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
