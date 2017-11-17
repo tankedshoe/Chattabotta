@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ChatPanel extends JPanel
 {
@@ -32,6 +34,9 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
+	/**
+	 * Sets all the aspects of the panel, such as putting in buttons and setting the background color.
+	 */
 	private void setupPanel()
 	{
 		this.setBackground(Color.CYAN);
@@ -39,8 +44,14 @@ public class ChatPanel extends JPanel
 		this.add(submit);
 		this.add(input);
 		this.add(responseArea);
+		responseArea.setEnabled(false);
+		responseArea.setEditable(false);
 	}
 	
+	
+	/** 
+	 * The dumping ground for all constraints in the GUI.
+	 */
 	private void setupLayout()
 	{
 		layout.putConstraint(SpringLayout.NORTH, input, 0, SpringLayout.NORTH, submit);
@@ -52,8 +63,19 @@ public class ChatPanel extends JPanel
 		layout.putConstraint(SpringLayout.EAST, responseArea, -25, SpringLayout.EAST, this);
 	}
 	
+	/**
+	 * Where listeners are attached to GUI elements.
+	 */
 	private void setupListeners()
 	{
-		
+		submit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = input.getText();
+				String displayText = appController.interactWithChatbot(userText);
+				responseArea.append(displayText);
+				input.setText("");
+			}
+		});
 	}
 }
