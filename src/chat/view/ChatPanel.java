@@ -18,6 +18,7 @@ public class ChatPanel extends JPanel
 	private JButton submit;
 	private JButton checker;
 	private SpringLayout layout;
+	private PopupDisplay display;
 	
 	public ChatPanel(ChatbotController appController) 
 	{
@@ -29,6 +30,8 @@ public class ChatPanel extends JPanel
 		this.input = new JTextField(20);
 		this.submit = new JButton("submit");
 		this.layout = new SpringLayout();
+		this.checker = new JButton("quit");
+		this.display = new PopupDisplay();
 		
 		setupPanel();
 		setupLayout();
@@ -45,6 +48,7 @@ public class ChatPanel extends JPanel
 		this.add(submit);
 		this.add(input);
 		this.add(responseArea);
+		this.add(checker);
 		responseArea.setEnabled(false);
 		responseArea.setEditable(false);
 	}
@@ -62,6 +66,9 @@ public class ChatPanel extends JPanel
 		layout.putConstraint(SpringLayout.NORTH, responseArea, 20, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, responseArea, 25, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, responseArea, -25, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.NORTH, checker, 6, SpringLayout.SOUTH, responseArea);
+		layout.putConstraint(SpringLayout.WEST, checker, 0, SpringLayout.WEST, submit);
+		layout.putConstraint(SpringLayout.EAST, checker, 0, SpringLayout.EAST, submit);
 	}
 	
 	/**
@@ -76,6 +83,14 @@ public class ChatPanel extends JPanel
 				String displayText = appController.interactWithChatbot(userText);
 				responseArea.append(displayText);
 				input.setText("");
+			}
+		});
+		
+		checker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				display.displayText("Goodbye!");
+				System.exit(0);
 			}
 		});
 	}
