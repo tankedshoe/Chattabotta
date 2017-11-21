@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 /**
- * The controller for popups in 
+ * The controller for popups in Chatbot.
  * @author Dane Heaps
  * @version 21/11/17 1.2
  */
