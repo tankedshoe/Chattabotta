@@ -10,6 +10,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The JPanel subclass for the chatbot project.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class ChatPanel extends JPanel
 {
 	private ChatbotController appController;
