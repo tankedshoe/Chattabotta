@@ -10,6 +10,11 @@ import org.junit.Test;
 
 import chat.model.Movie;
 
+/**
+ * The tester for the Movie class.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class MovieTest
 {
 	private Movie testedMovie;

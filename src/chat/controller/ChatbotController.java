@@ -3,6 +3,11 @@ package chat.controller;
 import chat.view.*;
 import chat.model.*;
 
+/**
+ * The controller for the Chatbot.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class ChatbotController
 {
 	private PopupDisplay display;

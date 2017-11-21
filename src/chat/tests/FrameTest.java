@@ -10,6 +10,11 @@ import chat.controller.ChatbotController;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
 
+/**
+ * The tester for ChatFrame.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class FrameTest
 {
 	private ChatFrame testedFrame;

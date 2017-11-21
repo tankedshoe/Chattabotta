@@ -16,6 +16,11 @@ import org.junit.Test;
 import chat.controller.ChatbotController;
 import chat.view.ChatPanel;
 
+/**
+ * The tester for ChatPanel.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class PanelTest
 {
 	private ChatPanel testedPanel;

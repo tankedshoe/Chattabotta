@@ -10,6 +10,11 @@ import org.junit.Test;
 
 import chat.model.Chatbot;
 
+/**
+ * The series of tests Chatbot is supposed to pass.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class ChatbotTest
 {
 	private Chatbot testedChatbot;

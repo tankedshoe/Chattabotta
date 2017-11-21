@@ -4,6 +4,11 @@ import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * The source of Chatbot's conversing ability.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class Chatbot
 {
 	private List<Movie> movieList;

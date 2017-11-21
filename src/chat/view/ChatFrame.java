@@ -3,6 +3,11 @@ package chat.view;
 import chat.controller.ChatbotController;
 import javax.swing.JFrame;
 
+/**
+ * The general frame for the GUI.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class ChatFrame extends JFrame
 {
 	private ChatbotController appController;

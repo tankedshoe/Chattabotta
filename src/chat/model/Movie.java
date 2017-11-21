@@ -2,6 +2,11 @@ package chat.model;
 
 import java.time.LocalDate;
 
+/**
+ * The source of the Chatbot's movie knowledge.
+ * @author Dane Heaps
+ * @version 21/11/17 1.2
+ */
 public class Movie
 {
 	private String title;
