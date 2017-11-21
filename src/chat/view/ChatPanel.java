@@ -94,8 +94,10 @@ public class ChatPanel extends JPanel
 		checker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click)
 			{
-				display.displayText("Goodbye!");
-				System.exit(0);
+				String userText = input.getText();
+				String displayText = appController.useCheckers(userText);
+				responseArea.append(displayText);
+				input.setText("");
 			}
 		});
 	}
