@@ -48,6 +48,30 @@ public class ChatbotController
 		{
 			response += "This matches the animal memes\n";
 		}
+		if(chatbot.htmlTagChecker(text))
+		{
+			response += "This matches the html tga needed\n";
+		}
+		if(chatbot.keyboardMashChecker(text))
+		{
+			response += "This is not a keyboard mash\n";
+		}
+		if(chatbot.userNameChecker(text))
+		{
+			response += "This is an adequate username\n";
+		}
+		if(chatbot.movieGenreChecker(text))
+		{
+			response += "This is a valid movie genre\n";
+		}
+		if(chatbot.movieTitleChecker(text))
+		{
+			response += "This is a valid movie title\n";
+		}
+		if(chatbot.shoppingListChecker(text))
+		{
+			response += "This is a valid shopping list\n";
+		}
 		//continue will all checkers except length and quit checker
 		
 		return response;
