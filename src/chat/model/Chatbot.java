@@ -125,7 +125,9 @@ public class Chatbot
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
+		chatbotResponse += currentTime.getHour() + ":" + currentTime.getMinute() + "\n";
 		chatbotResponse += "You said: " + "\n" + input + "\n";
+		
 		chatbotResponse += buildChatbotResponse();
 		
 		return chatbotResponse;
@@ -156,7 +158,7 @@ public class Chatbot
 		switch (followup)
 		{
 		case 0:
-			response += followUps[0] = "\n";
+			response += followUps[0] + "\n";
 			break;
 		case 3:
 			response += followUps[1] + "\n";

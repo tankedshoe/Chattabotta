@@ -65,7 +65,7 @@ public class ChatPanel extends JPanel
 		this.add(label);
 		this.add(chatScrollPane);
 		chatScrollPane.setEnabled(false);
-//		chatScrollPane.setEditable(false);
+		responseArea.setEditable(false);
 	}
 	
 	
