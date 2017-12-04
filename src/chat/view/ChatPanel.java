@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+//Need import for ScrollPane
+import javax.swing.JScrollPane;
 
 /**
  * The JPanel subclass for the chatbot project.
@@ -26,6 +28,8 @@ public class ChatPanel extends JPanel
 	private SpringLayout layout;
 	private PopupDisplay display;
 	private JLabel label;
+	//Need a data member for scrollPane
+	private JScrollPane chatScrollPane;
 	
 	public ChatPanel(ChatbotController appController) 
 	{
@@ -40,10 +44,12 @@ public class ChatPanel extends JPanel
 		this.checker = new JButton("quit");
 		this.display = new PopupDisplay();
 		this.label = new JLabel("Type to chat with the chatbot");
+		this.chatScrollPane = new JScrollPane();
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
+		setupScrollPane();
 	}
 	
 	/**
@@ -58,6 +64,7 @@ public class ChatPanel extends JPanel
 		this.add(responseArea);
 		this.add(checker);
 		this.add(label);
+		this.add(chatScrollPane);
 		responseArea.setEnabled(false);
 		responseArea.setEditable(false);
 	}
@@ -106,5 +113,12 @@ public class ChatPanel extends JPanel
 				input.setText("");
 			}
 		});
+	}
+	
+	private void setupScrollPane()
+	{
+		chatScrollPane.setViewportView(responseArea);
+		chatScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		chatScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}
 }
