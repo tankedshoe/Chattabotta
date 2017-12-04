@@ -61,12 +61,11 @@ public class ChatPanel extends JPanel
 		this.setLayout(layout);
 		this.add(submit);
 		this.add(input);
-		this.add(responseArea);
 		this.add(checker);
 		this.add(label);
 		this.add(chatScrollPane);
-		responseArea.setEnabled(false);
-		responseArea.setEditable(false);
+		chatScrollPane.setEnabled(false);
+//		chatScrollPane.setEditable(false);
 	}
 	
 	
@@ -76,13 +75,13 @@ public class ChatPanel extends JPanel
 	private void setupLayout()
 	{
 		layout.putConstraint(SpringLayout.NORTH, input, 0, SpringLayout.NORTH, submit);
-		layout.putConstraint(SpringLayout.WEST, input, 0, SpringLayout.WEST, responseArea);
+		layout.putConstraint(SpringLayout.WEST, input, 0, SpringLayout.WEST, chatScrollPane);
 		layout.putConstraint(SpringLayout.SOUTH, submit, -10, SpringLayout.SOUTH, this);
-		layout.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, responseArea);
-		layout.putConstraint(SpringLayout.NORTH, responseArea, 20, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, responseArea, 25, SpringLayout.WEST, this);
-		layout.putConstraint(SpringLayout.EAST, responseArea, -25, SpringLayout.EAST, this);
-		layout.putConstraint(SpringLayout.NORTH, checker, 6, SpringLayout.SOUTH, responseArea);
+		layout.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, chatScrollPane);
+		layout.putConstraint(SpringLayout.NORTH, chatScrollPane, 20, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, chatScrollPane, 25, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.EAST, chatScrollPane, -25, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.NORTH, checker, 6, SpringLayout.SOUTH, chatScrollPane);
 		layout.putConstraint(SpringLayout.WEST, checker, 0, SpringLayout.WEST, submit);
 		layout.putConstraint(SpringLayout.EAST, checker, 0, SpringLayout.EAST, submit);
 		layout.putConstraint(SpringLayout.WEST, label, 0, SpringLayout.WEST, input);
