@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Chatbot
 {
+	//Data members
 	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
@@ -23,6 +24,7 @@ public class Chatbot
 	private String intro;
 	private LocalTime currentTime;
 	
+	//Initializes data members, and calls helper methods.
 	public Chatbot(String username)
 	{
 		this.movieList = new ArrayList<Movie>();
@@ -49,6 +51,7 @@ public class Chatbot
 		buildFollowups();
 	}
 	
+	//Builds the topics
 	private void buildTopics()
 	{
 		topics[0] = "animals";
@@ -60,11 +63,15 @@ public class Chatbot
 		topics[6] = "miscellaneous";
 	}
 	
+	//Builds followups
 	private void buildFollowups()
 	{
-		
+		followUps[0] = "You are trash";
+		followUps[1] = "I hate you";
+		followUps[2] = "I'm tired of your junk";
 	}
 	
+	//Builds verbs
 	private void buildVerbs()
 	{
 		verbs[0] = "like";
@@ -73,6 +80,7 @@ public class Chatbot
 		verbs[3] = "am thinking about";
 	}
 	
+	//Builds questions
 	private void buildQuestions()
 	{
 		questions[0] = "What is your name?";
@@ -87,6 +95,7 @@ public class Chatbot
 		questions[9] = "What's your favorite fruit?";
 	}
 
+	//Builds the movie list
 	private void buildMovieList()
 	{
 		movieList.add(new Movie(""));
@@ -97,6 +106,7 @@ public class Chatbot
 		movieList.add(new Movie("Gladiator"));
 	}
 	
+	//Builds the shopping list
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -106,6 +116,7 @@ public class Chatbot
 		shoppingList.add("grains");
 	}
 	
+	//Builds the cute animal list
 	private void buildCuteAnimals()
 	{
 		cuteAnimalMemes.add("otter");
@@ -133,6 +144,7 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
+	//Creates the chatbot's response
 	private String buildChatbotResponse()
 	{
 		String response = "I";
@@ -174,6 +186,7 @@ public class Chatbot
 		return response;
 	}
 	
+	//Checks for adequate length.
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -186,6 +199,7 @@ public class Chatbot
 		return validLength;
 	}
 	
+	//Checks for adequate tags.
 	public boolean htmlTagChecker(String input)
 	{
 		boolean containsHTML = false;
@@ -224,9 +238,15 @@ public class Chatbot
 		return containsHTML;
 	}
 	
+	//Checks for a valid username.
 	public boolean userNameChecker(String input)
 	{
-		if (input.contains("@") || !input.equals(null) || !input.contains("") || !input.contains(".com") || !input.contains("@@"))
+		if (input == null || !input.startsWith("@@"))
+		{
+			return false;
+		}
+		
+		if (input.startsWith("@"))
 		{
 			return true;
 		}
@@ -236,11 +256,18 @@ public class Chatbot
 		}
 	}
 	
+	//Checks for existence of content.
 	public boolean contentChecker(String contentCheck)
 	{
-		return false;
+		if (contentCheck == null)
+		{
+			return false;
+		}
+		
+		return true;
 	}
 	
+	//Checks for an adequate cuteAnimalMeme list.
 	public boolean cuteAnimalMemeChecker(String input)
 	{
 		int index = 0;
@@ -259,6 +286,7 @@ public class Chatbot
 		return true;
 	}
 	
+	//Checks for an adequate shoppingList.
 	public boolean shoppingListChecker(String shoppingItem)
 	{
 		int index = 0;
@@ -278,6 +306,7 @@ public class Chatbot
 		return true;
 	}
 	
+	//Checks for and adequate movieTitle list.
 	public boolean movieTitleChecker(String title)
 	{
 		int index = 0;
@@ -297,25 +326,46 @@ public class Chatbot
 		return true;
 	}
 	
+	//Checks for a valid movie genre.
 	public boolean movieGenreChecker(String genre)
 	{
 		return false;
 	}
 
+	//Checks for a valid quit.
 	public boolean quitChecker(String exitString)
 	{
-		if (exitString.equalsIgnoreCase("quit"))
+		if (exitString == null)
+		{
+			return false;
+		}
+		
+		else if (exitString.equalsIgnoreCase("quit"))
 		{
 			return true;
 		}
 		return false;
 	}
 
+	//Checks for keyboard mashing.
 	public boolean keyboardMashChecker(String sample)
 	{
 		return true;
 	}
 	
+	public boolean toStringChecker(String input)
+	{
+		if (input.contains("@"))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	//Getters.
 	public List<Movie> getMovieList()
 	{
 		return movieList;
@@ -371,6 +421,7 @@ public class Chatbot
 		return currentTime;
 	}
 	
+	//Setters.
 	public void setUsername(String username)
 	{
 		this.username = username;

@@ -1,3 +1,4 @@
+
 package chat.controller;
 
 import chat.view.*;
@@ -14,6 +15,7 @@ public class ChatbotController
 	private Chatbot chatbot;
 	private ChatFrame appFrame;
 	
+	//Initialization for the controller.
 	public ChatbotController()
 	{
 		chatbot = new Chatbot("Dane Heaps");
@@ -22,11 +24,13 @@ public class ChatbotController
 		appFrame = new ChatFrame(this);
 	}
 	
+	//Starts the app.
 	public void start()
 	{
 		display.displayText("Welcome to Chattabotta!");
 	}
 	
+	//Returns the chatbot's response
 	public String interactWithChatbot(String input)
 	{
 		String chatbotSays = "";
@@ -41,6 +45,7 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
+	//Uses the checkers when a button is pressed.
 	public String useCheckers(String text)
 	{
 		String response = "";
@@ -82,12 +87,14 @@ public class ChatbotController
 		return response;
 	}
 	
+	//The quit method.
 	private void close()
 	{
 		display.displayText("Goodbye!");
 		System.exit(0);
 	}
 	
+	//
 	private String popupChat(String chat)
 	{
 		String chatbotSays = "";
@@ -96,5 +103,7 @@ public class ChatbotController
 		
 		return chatbotSays;
 	}
+	
+	
 }
 
