@@ -140,6 +140,41 @@ public class ChatPanel extends JPanel
 				input.setText("");
 			}
 		});
+		
+		chatButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		loadButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		tweetButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
 	}
 	
 	private void setupScrollPane()
