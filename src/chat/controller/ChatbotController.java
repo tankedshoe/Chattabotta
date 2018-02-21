@@ -104,6 +104,25 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
+	public void handleErrors(Exception error)
+	{
+		display.displayText(error.getMessage());
+	}
+	
+	public Chatbot getChatbot()
+	{
+		return chatbot;
+	}
+	
+	public PopupDisplay getDisplay()
+	{
+		return display;
+	}
+	
+	public ChatFrame getChatFrame()
+	{
+		return appFrame;
+	}
 	
 }
 
