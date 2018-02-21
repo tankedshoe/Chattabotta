@@ -47,7 +47,12 @@ public class ChatPanel extends JPanel
 		
 		chatButton = new JButton("chat", new ImageIcon(getClass().getResource("/chat/view/images/chatIcon.png")));
 		searchButton = new JButton("search", new ImageIcon(getClass().getResource("/chat/view/images/searchIcon.png")));
+		layout.putConstraint(SpringLayout.EAST, searchButton, -120, SpringLayout.EAST, this);
 		tweetButton = new JButton("tweet", new ImageIcon(getClass().getResource("/chat/view/images/tweetIcon.png")));
+		layout.putConstraint(SpringLayout.NORTH, tweetButton, 2, SpringLayout.SOUTH, chatButton);
+		layout.putConstraint(SpringLayout.WEST, tweetButton, 10, SpringLayout.EAST, label);
+		layout.putConstraint(SpringLayout.SOUTH, tweetButton, 128, SpringLayout.SOUTH, chatScrollPane);
+		layout.putConstraint(SpringLayout.EAST, tweetButton, -297, SpringLayout.EAST, this);
 		saveButton = new JButton("save", new ImageIcon(getClass().getResource("/chat/view/images/saveIcon.png")));
 		loadButton = new JButton("load", new ImageIcon(getClass().getResource("/chat/view/images/loadIcon.png")));
 		
@@ -98,11 +103,6 @@ public class ChatPanel extends JPanel
 		layout.putConstraint(SpringLayout.WEST, loadButton, 6, SpringLayout.EAST, saveButton);
 		layout.putConstraint(SpringLayout.SOUTH, loadButton, 0, SpringLayout.SOUTH, chatButton);
 		layout.putConstraint(SpringLayout.EAST, loadButton, 94, SpringLayout.EAST, saveButton);
-		layout.putConstraint(SpringLayout.WEST, tweetButton, 574, SpringLayout.WEST, this);
-		layout.putConstraint(SpringLayout.EAST, tweetButton, -25, SpringLayout.EAST, this);
-		layout.putConstraint(SpringLayout.EAST, searchButton, -7, SpringLayout.WEST, tweetButton);
-		layout.putConstraint(SpringLayout.SOUTH, tweetButton, 66, SpringLayout.SOUTH, chatScrollPane);
-		layout.putConstraint(SpringLayout.NORTH, tweetButton, 6, SpringLayout.SOUTH, chatScrollPane);
 		layout.putConstraint(SpringLayout.NORTH, chatButton, 0, SpringLayout.NORTH, searchButton);
 		layout.putConstraint(SpringLayout.NORTH, searchButton, 6, SpringLayout.SOUTH, chatScrollPane);
 		layout.putConstraint(SpringLayout.WEST, checker, 282, SpringLayout.EAST, label);
@@ -165,7 +165,7 @@ public class ChatPanel extends JPanel
 		tweetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				appController.tweet(input.getText());
 			}
 		});
 		
