@@ -14,6 +14,7 @@ public class ChatbotController
 	private PopupDisplay display;
 	private Chatbot chatbot;
 	private ChatFrame appFrame;
+	private CTECTwitter myTwitter;
 	
 	//Initialization for the controller.
 	public ChatbotController()
@@ -22,6 +23,7 @@ public class ChatbotController
 		//View initialized after Model
 		display = new PopupDisplay();
 		appFrame = new ChatFrame(this);
+		myTwitter = new CTECTwitter(this);
 	}
 	
 	//Starts the app.
@@ -122,6 +124,11 @@ public class ChatbotController
 	public ChatFrame getChatFrame()
 	{
 		return appFrame;
+	}
+	
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
 	}
 	
 }
