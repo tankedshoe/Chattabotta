@@ -10,6 +10,8 @@ public class CTECTwitter
 {
 	private ChatbotController appController;
 	private Twitter chatbotTwitter;
+	private List<Status> searchedTweets;
+	private List<String> tweetedWords;
 	
 	public CTECTwitter(ChatbotController appController)
 	{
@@ -36,12 +38,14 @@ public class CTECTwitter
 	public String getMostCommonWord(String username)
 	{
 		String mostCommon = "";
+		
+		collectTweets(username);
 		return mostCommon;
 	}
 	
 	private void collectTweets(String username)
 	{
-		searhedTweets.clear();
+		searchedTweets.clear();
 		tweetedWords.clear();
 		
 		Paging statusPage = new Paging(1, 100);
@@ -70,4 +74,19 @@ public class CTECTwitter
 			page++;
 		}
 	}
+	
+	private void turnStatusesToWords()
+	{
+		for(Status currentStatus : searchedTweets)
+		{
+			String tweetText = currentStatus.getText();
+			String [] tweetWords = tweetText.split(" ");
+			for(int index = 0; index < tweetWords.length; index++)
+			{
+				tweetedWords.add(removePunctuation(tweetWords[index]).trim());
+			}
+		}
+	}
+	
+	
 }

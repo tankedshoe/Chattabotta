@@ -47,12 +47,7 @@ public class ChatPanel extends JPanel
 		
 		chatButton = new JButton("chat", new ImageIcon(getClass().getResource("/chat/view/images/chatIcon.png")));
 		searchButton = new JButton("search", new ImageIcon(getClass().getResource("/chat/view/images/searchIcon.png")));
-		layout.putConstraint(SpringLayout.EAST, searchButton, -120, SpringLayout.EAST, this);
 		tweetButton = new JButton("tweet", new ImageIcon(getClass().getResource("/chat/view/images/tweetIcon.png")));
-		layout.putConstraint(SpringLayout.NORTH, tweetButton, 2, SpringLayout.SOUTH, chatButton);
-		layout.putConstraint(SpringLayout.WEST, tweetButton, 10, SpringLayout.EAST, label);
-		layout.putConstraint(SpringLayout.SOUTH, tweetButton, 128, SpringLayout.SOUTH, chatScrollPane);
-		layout.putConstraint(SpringLayout.EAST, tweetButton, -297, SpringLayout.EAST, this);
 		saveButton = new JButton("save", new ImageIcon(getClass().getResource("/chat/view/images/saveIcon.png")));
 		loadButton = new JButton("load", new ImageIcon(getClass().getResource("/chat/view/images/loadIcon.png")));
 		
@@ -90,6 +85,11 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
+		layout.putConstraint(SpringLayout.EAST, searchButton, -120, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.NORTH, tweetButton, 2, SpringLayout.SOUTH, chatButton);
+		layout.putConstraint(SpringLayout.WEST, tweetButton, 10, SpringLayout.EAST, label);
+		layout.putConstraint(SpringLayout.SOUTH, tweetButton, 128, SpringLayout.SOUTH, chatScrollPane);
+		layout.putConstraint(SpringLayout.EAST, tweetButton, -297, SpringLayout.EAST, this);
 		layout.putConstraint(SpringLayout.NORTH, chatScrollPane, 20, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, chatScrollPane, 25, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, chatScrollPane, -25, SpringLayout.EAST, this);
@@ -172,7 +172,9 @@ public class ChatPanel extends JPanel
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click)
 			{
+				String usernameToSearch = input.getText();
 				
+				responseArea.setText(appController.search(usernameToSearch));
 			}
 		});
 	}
