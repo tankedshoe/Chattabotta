@@ -5,6 +5,7 @@ import chat.controller.*;
 import twitter4j.*;
 import java.text.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CTECTwitter
 {
@@ -51,6 +52,16 @@ public class CTECTwitter
 		String [] boring = createIgnoredWordArray();
 		trimTheBoringWords(boring);
 		removeBlanks();
+		generateWordCount();
+		
+		Hashtable<String, Integer> topOne = 
+				wordsAndCount.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue()).limit(1).collect(Collectors.toMap
+						(Map.Entry :: getKey, Map.Entry :: getValue, (e1 , e2) -> e1, Hashtable :: new));
+		
+		String mostCommonWord = topOne.keys().nextElement();
+		maxWord = topOne.get(mostCommonWord);
+		mostCommon = "The most common word in " + username + "'s " + searchedTweets.size() + " tweets is " + mostCommonWord + ", an it was used"
 		
 		return mostCommon;
 	}
