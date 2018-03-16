@@ -54,16 +54,21 @@ public class CTECTwitter
 		removeBlanks();
 		generateWordCount();
 		
-		Hashtable<String, Integer> topOne = 
-				wordsAndCount.entrySet().stream()
-				.sorted(Map.Entry.comparingByValue()).limit(1).collect(Collectors.toMap
-						(Map.Entry :: getKey, Map.Entry :: getValue, (e1 , e2) -> e1, Hashtable :: new));
-		
 		String mostCommonWord = topOne.keys().nextElement();
 		maxWord = topOne.get(mostCommonWord);
-		mostCommon = "The most common word in " + username + "'s " + searchedTweets.size() + " tweets is " + mostCommonWord + ", an it was used"
+		mostCommon = "The most common word in " + username + "'s " + searchedTweets.size() + " tweets is " + mostCommonWord + ", and it was used " + maxWord + " times.\nThis is " + (DecimalFormat.getPercentInstance().format(((double) maxWord)/totalWordCount) + " of total words: " + totalWordCount + " and is " + (DecimalFormat.getPercentInstance().format(((double) maxword)/wordsAndCount.size()) + " of the unique words: " + wordsAndCount.size();
+		
+		mostCommon += "\n\n" + sortedWords();
 		
 		return mostCommon;
+	}
+	
+	private ArrayList<Map.Entry<String, Integer>> sortHashMap()
+	{
+		ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(wordsAndCount.entrySet());
+		entries.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+		
+		return entries;
 	}
 	
 	private void trimTheBoringWords(String [] boringWords)
@@ -196,5 +201,73 @@ public class CTECTwitter
 				wordsAndCount.replace(word.toLowerCase(), wordsAndCount.get(word.toLowerCase()) + 1);
 			}
 		}
+	}
+	
+	private String sortedWords()
+	{
+		String allWords = "";
+		String [] words = (String []) wordsAndCount.keySet().toArray();
+		ArrayList<String> wordList = new ArrayList<String>(wordsAndCount.keySet());
+		
+		for(int index = 0; index < wordsAndCount.size(); index++)
+		{
+			words[index] = wordList.get(index);
+		}
+		
+		for(int index = 0; index < words.length - 1; index++)
+		{
+			int maxIndex = index;
+			
+			for (int inner = index + 1; inner < words.length; inner++)
+			{
+				if (words[inner].compareTo(words[maxIndex]) > 0)
+				{
+					maxIndex = inner;
+				}
+			}
+			
+			String tempMax = words[maxIndex];
+			words[maxIndex] = words[index];
+			words[index] = tempMax;
+		}
+		
+		for (String word : words)
+		{
+			allWords += word + ", ";
+		}
+		
+		return allWords;
+	}
+	
+	public String analyzeTwitterForTopic(String topic)
+	{
+		String results = "";
+		searchedTweets.clear();
+		Query twitterQuery = new Query(topic);
+		int resultMax = 750;
+		long lastId = Long.MAX_VALUE;
+		twitterQuery.setGeoCode(new GeoLocation(latitude, longitude), radius, Query.MEASUREMENT);
+		ArrayList<Status> matchingTweets = new ArrayList<Status>();
+		while(searchedTweets.size() < resultMax)
+		{
+			try 
+			{
+				QueryResult resultingTweets = chatbotTwitter.search(twitterQuery);
+			}
+			catch(TwitterException error)
+			{
+				appController.handleErrors(error);
+			}
+			
+			twitterQuery.setMaxId(lastId - 1);
+		}
+		
+		results += "talk about the search results";
+		results += "Find a tweet that will pass one of the checkers in chatbot";
+		
+		int randomTweet = (int) (Math.random() * matchingTweets.size());
+		results += matchingTweets.get(randomTweet);
+		
+		return results;
 	}
 }
